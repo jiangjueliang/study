@@ -161,4 +161,31 @@ public class StudentsDaoImpl implements StudentsDao {
 		}
 	}
 
+
+
+	public List<Students> selectStudentBySname(String sname) {
+		Session session=null;
+		String hql="";
+		Transaction tx=null;
+		List<Students> selectlist=null;
+		try {
+			session=MyHibernateSessionFactory.getSessionFactory().getCurrentSession();
+			tx=session.beginTransaction();
+			hql="from Students where sname like '%"+sname+"%'";
+			Query query=session.createQuery(hql);
+			selectlist=query.list();
+			tx.commit();
+			return selectlist;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			tx.commit();
+			return selectlist;
+		}finally{
+			if(tx!=null){
+				tx=null;
+			}
+		}
+	}
+
 }

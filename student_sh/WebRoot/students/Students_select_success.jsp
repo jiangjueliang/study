@@ -113,7 +113,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</tr>
 	
 	<!-- 遍历开始 -->
-	<s:iterator value="#session.students_list" var="stu">
+	<s:iterator value="#session.select_list" var="stu">
 	<tr class="list">
 		<td><s:property value="#stu.sid"/></td>
 		<td><a href="<%=path%>/students/Students_modify.action?sid=<s:property value="#stu.sid"/>"><s:property value="#stu.sname"/></a></td>

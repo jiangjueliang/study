@@ -31,6 +31,9 @@
 		<action name="Students_update" class="action.StudentsAction" method="update">
 			<result name="update_success">/students/Students_modify_success.jsp</result>
 		</action>
+		<action name="Students_selectStudents" class="action.StudentsAction" method="selectStudents">
+			<result name="select_success">/students/Students_select_success.jsp</result>
+		</action>
 	</package>
 
 </struts>

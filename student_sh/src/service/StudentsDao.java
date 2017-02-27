@@ -21,4 +21,6 @@ public interface StudentsDao {
 	
 	//删除学生资料
 	public boolean deleteStudents(String sid); 
+	//根据姓名进行查询
+	public List<Students> selectStudentBySname(String sname); 
 }

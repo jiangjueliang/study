@@ -23,6 +23,17 @@ public class StudentsAction extends SuperAction implements ModelDriven<Students>
 		}
 		return "students_success";
 	}
+	//根据学生姓名查询动作
+	public String selectStudents(){
+		StudentsDao sdao=new StudentsDaoImpl();
+		String sname=request.getParameter("sname");
+		List<Students> list=sdao.selectStudentBySname(sname);
+		if(list!=null&&list.size()>0){
+			//放进session中
+			session .setAttribute("select_list", list);
+		}
+		return "select_success";
+	}
 	//删除学生动作
 	public String deleteStudents(){
 		StudentsDao sdao=new StudentsDaoImpl();

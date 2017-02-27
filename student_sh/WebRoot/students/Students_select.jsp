@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <style type="text/css">
 * {
     background: none repeat scroll 0 0 transparent;
-    border: 0 none;
+    border: 1 none;
     margin: 0;
     padding: 0;
     vertical-align: baseline;
@@ -48,8 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	height:35px;
 }
 .button{
-	float:left;
-	margin-right:10px;
+	margin-top:20px;
 	padding-left:10px;
 	padding-right:10px;
 	font-size:14px;
@@ -71,12 +70,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 #mainContainer{
 	padding-left:10px;
 	padding-right:10px;
-	text-align:center;
+	text-align:left;
 	width:98%;
-	font-size:12px;
+	font-size:16px;
 }
 </style>
 <body>
+<script type="text/javascript" src="../js/Calendar3.js"></script>
+
 <div id="navi">
 	<div id='naviDiv'>
 		<span><img src="../images/arror.gif" width="7" height="11" border="0" alt=""></span>&nbsp;学生管理<span>&nbsp;
@@ -84,49 +85,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</div>
 </div>
 <div id="tips">
-	<div id="buttonGroup">
-		<div class="button" onmouseout="this.style.backgroundColor='';this.style.fontWeight='normal'" onmouseover="this.style.backgroundColor='#77D1F6';this.style.fontWeight='bold'">
-			<a href="<%=path%>/students/Students_add.jsp">添加学生</a>
-		</div>
-		<div class="button" onmouseout="this.style.backgroundColor='';this.style.fontWeight='normal'" onmouseover="this.style.backgroundColor='#77D1F6';this.style.fontWeight='bold'">
-			<a href="<%=path%>/students/Students_select.jsp">查找学生</a>
-		</div>
-	</div>
 </div>
 <div id="mainContainer">
 <!-- 从session中获取学生集合 -->
-
-<table class="default" width="100%">
-	<col width="10%">
-	<col width="20%">
-	<col width="5%">
-	<col width="20%">
-	<col width="30%">
-	<col width="15%">
-	<tr class="title">
-		<td>学号</td>
-		<td>姓名</td>
-		<td>性别</td>
-		<td>出生日期</td>
-		<td>地址</td>
-		<td>操作</td>
-	</tr>
-	
-	<!-- 遍历开始 -->
-	<s:iterator value="#session.students_list" var="stu">
-	<tr class="list">
-		<td><s:property value="#stu.sid"/></td>
-		<td><a href="<%=path%>/students/Students_modify.action?sid=<s:property value="#stu.sid"/>"><s:property value="#stu.sname"/></a></td>
-		<td><s:property value="#stu.gender"/></td>
-		<td><s:date name="#stu.birthday" format="yyyy年MM月dd日"/></td>
-		<td><s:property value="#stu.address"/></td>
-		<td><a href="<%=path%>/students/Students_deleteStudents.action?sid=<s:property value="#stu.sid"/>" onclick="javascript: return confirm('真的要删除吗？');">删除</a>
-		&nbsp&nbsp&nbsp&nbsp&nbsp<a href="<%=path%>/students/Students_modify.action?sid=<s:property value="#stu.sid"/>">修改</a>
-		</td>
-	</tr>
-	</s:iterator>
-	<!-- 遍历结束 -->
+<strong>添加学生资料</strong>
+<br>
+<br>
+<form name="selectForm" action="<%=path%>/students/Students_selectStudents.action" method="post">
+<table width="400" >
+<h2>模糊查询</h2>
+  <tr>
+    <td width="30%">姓名：</td>
+    <td><input type="text" name="sname" /></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center"><input class="button" type="submit" value="查找"></td>
+  </tr>
 </table>
+</form>
+
+
 </div>
 </body>
 </html>
