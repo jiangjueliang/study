@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="entity">
+
+	<class name="Students" table="students">
+		<id name="sid" length="8">
+			<!-- 主键生成策略 -->
+			<generator class="assigned"></generator>
+		</id>
+		<!-- 实体类的属性 -->
+		<property name="sname"/>
+		<property name="gender"></property>
+		<property name="birthday"></property>
+		<property name="address"></property>	
+	</class>
+
+</hibernate-mapping>
